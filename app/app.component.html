@@ -1,0 +1,22 @@
+<h1>ng2Do(OOP)</h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col m6 offset-m3 s8 offset-s2">
+            <ul class="collection with-header">
+                <li class="collection-header">
+                        <input placeholder="Add Task" type="text" class="validate" [(ngModel)]="input" (keyup.enter)="onAdd()">
+                        <a class="btn-floating waves-effect waves-light prefix"><i class="material-icons" (click)="onAdd()">add</i></a>
+                </li>
+                <li class="collection-item" *ngFor="let todo of tasks; let i = index;">
+                    <div>
+                      
+                            <input type="checkbox" class="filled-in" id="filled-in-box{{i}}" [(ngModel)]="todo.status" />
+                            <label [attr.for]="'filled-in-box'+i" [class]="todo.status">{{todo.task}}</label>
+                        
+                        <a class="secondary-content" (click)="onDelete(i)"><i class="material-icons">delete</i></a>
+                        </div>
+                        </li>
+            </ul>
+        </div>
+    </div>
+</div>
