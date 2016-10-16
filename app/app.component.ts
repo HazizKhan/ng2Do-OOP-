@@ -35,12 +35,19 @@ import { Todo } from './todo';
         .true{
             text-decoration:line-through;
         }
+        label{
+            width:75%;
+        }
+        label input{
+            height:20px;
+        }
         `
     ]
 })
 export class AppComponent {
     tasks: Todo[];
     input:string;
+    newValue:string;
         constructor(){
         this.tasks = [
             new Todo("Task 1"),
@@ -58,4 +65,13 @@ export class AppComponent {
     onDelete(index:number){
             this.tasks.splice(index, 1);
         }
+    onEdit(i:number){
+        this.tasks[i].editMode = true;
+        this.newValue = this.tasks[i].task;
+    }
+    onUpdate(i:number){
+        if(this.newValue)
+        this.tasks[i].task = this.newValue;
+        this.tasks[i].editMode = false;
+    }
  }

@@ -11,9 +11,10 @@
                     <div>
                       
                             <input type="checkbox" class="filled-in" id="filled-in-box{{i}}" [(ngModel)]="todo.status" />
-                            <label [attr.for]="'filled-in-box'+i" [class]="todo.status">{{todo.task}}</label>
-                        
+                            <label [attr.for]="'filled-in-box'+i" [class]="todo.status"><span *ngIf="!todo.editMode">{{todo.task}}</span><input type="text" *ngIf="todo.editMode" [(ngModel)]="newValue"></label>
                         <a class="secondary-content" (click)="onDelete(i)"><i class="material-icons">delete</i></a>
+                        <a class="secondary-content" *ngIf="!todo.editMode" (click)="onEdit(i)"><i class="material-icons">mode_edit</i></a>                        
+                        <a class="secondary-content"  *ngIf="todo.editMode" (click)="onUpdate(i)"><i class="material-icons">done_all</i></a>                        
                         </div>
                         </li>
             </ul>
